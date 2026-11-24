@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Pages: export estatico (CF_PAGES lo inyecta Cloudflare); Vercel mantiene standalone.
-  output: process.env.CF_PAGES ? "export" : "standalone",
+  // Vercel mantiene standalone; cualquier otro hosting (Pages, Workers, etc) exporta estatico.
+  output: process.env.VERCEL ? "standalone" : "export",
   /* config options here */
   turbopack: {
     root: process.cwd(),
